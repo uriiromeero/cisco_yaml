@@ -1,0 +1,17 @@
+---
+- name: Configuración del Switch Cisco
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    modelo_switch: "modelo_predeterminado"
+    hostname_switch: "switch_predeterminado"
+    vlan_gestion: "1"
+    ip_gestion: "192.168.1.1"
+    mascara_gestion: "255.255.255.0"
+
+  tasks:
+    - name: Crear configuración del switch
+      template:
+        src: switch_template.j2
+        dest: "config_switch_{{ hostname_switch }}.txt"
